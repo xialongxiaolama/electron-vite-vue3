@@ -16,9 +16,16 @@ export default defineConfig(( { command, mode } : ConfigEnv): UserConfig => {
         '#': path.resolve(__dirname,'./types'),
       }
     },
+    build:{
+      minify: 'esbuild',
+      rollupOptions: {
+        treeshake: true,
+      },
+    },
     server:{
       port:  7366,//端口号 vite 默认5177
-      host:true //暴露ip
+      host:true , //暴露ip
+      cors:true,
     },
     plugins: createVitePlugins(viteEnv,isBuild),
     css:{

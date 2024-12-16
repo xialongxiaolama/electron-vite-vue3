@@ -1,0 +1,43 @@
+
+/**
+ * @see https://www.electron.build/configuration/configuration
+ */
+{
+  "productName": "三年练习生",
+  "appId": "com.test",
+  "asar": true,
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "!**/node_modules/**",
+    "!**/*.map",
+  ],
+  "mac": {
+    "artifactName": "${productName}_${version}.${ext}",
+    "target": [
+      "dmg"
+    ]
+  },
+  "win": {
+    "icon": "dist/icon_rui.ico",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}_${version}.${ext}"
+  },
+  "nsis": {
+    "shortcutName": "瑞谱斯客户端",
+    "oneClick": false,
+    "perMachine": true,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false,
+     "installerHeaderIcon": "dist/icon_rui.ico",
+  }
+}

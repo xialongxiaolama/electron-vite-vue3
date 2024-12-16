@@ -9,11 +9,11 @@ import { ConfigProgressPlugin } from './progress'
 import { ConfigRestartPlugin } from './restart';
 import { SvgIconsPlugin } from './svgIcon';
 import { configUnocss } from './unocss';
-
+import { ConfigCompressPlugin } from './compress';
 // import { customConsoleLog } from './log'
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+  const { VITE_USE_MOCK, VITE_USE_COMPRESS } = viteEnv;
   // console.log('扩展参数', viteEnv)
-
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     //自动生成路由 要放在vue前
     vueRouterPlugin(),
@@ -48,6 +48,10 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   //构建显示进度条
   vitePlugins.push(ConfigProgressPlugin())
 
+  // if (isBuild) {
+  //   // gz压缩  rollup-plugin-gzip
+  //   vitePlugins.push(ConfigCompressPlugin());
+  // }
 
   return vitePlugins
 }
